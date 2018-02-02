@@ -30,6 +30,7 @@ class PlayerTest extends TestCase {
 			'The player should have 3 goals' #message
 		);
 	}
+
 	#ASSERT TRUE
 	public function testHasScored() {
 		$this->Player->score(1);
@@ -67,7 +68,7 @@ class PlayerTest extends TestCase {
 			'5 assists' => [5, 5],
 			'10 assists' => [10, 10],
 			'20 assists' => [20, 20],
-			// '30 assists' => [29, 30] THIS TEST WILL FAIL
+			'30 assists' => [29, 30] #THIS TEST WILL FAIL
 		];
 	}
 
@@ -119,12 +120,12 @@ class PlayerTest extends TestCase {
      * @expectedException InvalidArgumentException
      */
 	public function testScoreException() {
-		$input = -1;
+		$input = 'zero';
 		// $this->expectException('InvalidArgumentException');
 		$this->Player->score($input);
 	}
 
-	#DEEP COMAPRE 
+	#DEEP COMPARE 
 	#assertEquals allows deep compare.
 	public function testPlayerCompareDeep() {
 		$output = new Player('Fred');
@@ -179,8 +180,7 @@ class PlayerTest extends TestCase {
 		#ASSERTSTATEMENT
 	}
 	#Better code to unit test time
-	public function testDateTimeGood() {
-		$hour = getHour();
+	public function testDateTimeGood($hour) {
 		if (($hour > '0') And ($hour < '6')) {
 			$output = "Night";
 		}
